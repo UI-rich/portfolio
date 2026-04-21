@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX 项目集</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-tab active" data-target="hero">首页</a></li>
+                <li><a href="#projects" class="nav-tab" data-target="projects">项目</a></li>
+                <li><a href="#blog" class="nav-tab" data-target="blog">博文</a></li>
+                <li><a href="#about" class="nav-tab" data-target="about">关于我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页 Hero 区域 -->
+    <section id="hero" class="hero module active">
+        <img src="images/home/hero_bg.png" alt="背景" class="hero-bg">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>UI/UX 设计师</h1>
+                <p>专注于创造美观且易用的数字产品体验，擅长B端界面设计、数据可视化和用户体验优化。</p>
+                <a href="#about" class="btn">了解更多</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-icon"></div>
+        </div>
+    </section>
+
+    <!-- 代表项目模块 (首页展示) -->
+    <section id="featured-projects" class="featured-projects module">
+        <h2 class="featured-title">代表作品</h2>
+
+        <div class="featured-grid">
+            <!-- 由JavaScript动态渲染 -->
+        </div>
+    </section>
+
+    <!-- 项目模块 (导航栏链接) -->
+    <section id="projects" class="projects module">
+
+        <div class="project-tabs">
+            <button class="tab-btn active">全部</button>
+            <button class="tab-btn">B端UI</button>
+            <button class="tab-btn">可视化大屏</button>
+            <button class="tab-btn">Web网页</button>
+            <button class="tab-btn">平面运营</button>
+            <button class="tab-btn">其他</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- 由JavaScript动态渲染 -->
+        </div>
+    </section>
+
+    <!-- 博文模块 -->
+    <section id="blog" class="blog module">
+        <div class="blog-container">
+            <h2 class="section-title">最新博文</h2>
+            <div class="blog-list">
+                <div class="blog-item" data-blog-id="1">
+                    <h3 class="blog-title">【从奇瑞项目谈B端设计的简约之道】</h3>
+                    <div class="blog-meta">
+                        <span class="blog-date">2024-04-15</span>
+                        <div class="blog-tags">
+                            <span class="blog-tag">UI设计</span>
+                            <span class="blog-tag">B端设计</span>
+                            <span class="blog-tag">简约设计</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <h3 class="blog-title">如何提升用户体验</h3>
+                    <div class="blog-meta">
+                        <span class="blog-date">2024-04-10</span>
+                        <div class="blog-tags">
+                            <span class="blog-tag">用户体验</span>
+                            <span class="blog-tag">设计流程</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <h3 class="blog-title">数据可视化最佳实践</h3>
+                    <div class="blog-meta">
+                        <span class="blog-date">2024-04-05</span>
+                        <div class="blog-tags">
+                            <span class="blog-tag">数据可视化</span>
+                            <span class="blog-tag">设计指南</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 关于我模块 -->
+    <section id="about" class="about module">
+        <!-- 新的首屏 - 个人介绍图片 -->
+        <div class="about-empty-first-screen">
+            <img src="images/about/photo.png" alt="个人照片" class="about-photo">
+            <div class="about-text-content">
+                <h1>HI, I'm <span class="highlight">王瑞成</span><span class="tag">UI/UX设计师</span></h1>
+                
+                <!-- 基本信息模块 -->
+                <div class="about-module">
+                    <h2>#基本信息</h2>
+                    <div class="info-grid">
+                        <div class="info-item"><span class="info-label">年龄</span>23</div>
+                        <div class="info-item"><span class="info-label">毕业院校</span>西南交通大学（本科）</div>
+                        <div class="info-item"><span class="info-label">专业</span>产品设计</div>
+                        <div class="info-item"><span class="info-label">工作年限</span>2年</div>
+                        <div class="info-item"><span class="info-label">求职岗位</span>UI/UX设计师</div>
+                        <div class="info-item"><span class="info-label">联系电话</span>15333237395（微信同号）</div>
+                    </div>
+                </div>
+                
+                <!-- 工作履历模块 -->
+                <div class="about-module">
+                    <h2>#工作履历</h2>
+                    <div class="work-experience">
+                        <div class="work-item">
+                            <div class="work-company">江苏擎天工业互联网有限公司</div>
+                            <div class="work-period">2024-06至今</div>
+                            <div class="work-position">UI设计师</div>
+                        </div>
+                        <div class="work-content">
+                            <span class="work-content-label">工作内容</span>B端系统UI设计、可视化大屏设计、设计规范搭建与维护、web端网页设计、运营平面设计、设计经验总结与分享
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 掌握工具模块 -->
+                <div class="about-module">
+                    <h2>#掌握工具</h2>
+                    <div class="tools-container">
+                        <div class="tools-grid">
+                            <!-- Mastergo工具 -->
+                            <div class="tool-item">
+                                <img src="images/about/mastergo.png" alt="Mastergo" class="tool-icon">
+                                <div class="tool-info">
+                                    <div class="tool-name">Mastergo</div>
+                                    <div class="tool-level">精通</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Photoshop工具 -->
+                            <div class="tool-item">
+                                <img src="images/about/photoshop.png" alt="Photoshop" class="tool-icon">
+                                <div class="tool-info">
+                                    <div class="tool-name">Photoshop</div>
+                                    <div class="tool-level">精通</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Figma工具 -->
+                            <div class="tool-item">
+                                <img src="images/about/figma.png" alt="Figma" class="tool-icon">
+                                <div class="tool-info">
+                                    <div class="tool-name">Figma</div>
+                                    <div class="tool-level">精通</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Axure工具 -->
+                            <div class="tool-item">
+                                <img src="images/about/axure.png" alt="Axure" class="tool-icon">
+                                <div class="tool-info">
+                                    <div class="tool-name">Axure</div>
+                                    <div class="tool-level">精通</div>
+                                </div>
+                            </div>
+                            
+                            <!-- AI编程工具 -->
+                            <div class="tool-item">
+                                <img src="images/about/front.png" alt="AI编程" class="tool-icon">
+                                <div class="tool-info">
+                                    <div class="tool-name">AI编程</div>
+                                    <div class="tool-level">精通</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-container-full">
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="images/about/bg.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="timeline-mask"></div>
+            <div class="timeline-main-title" id="timelineTitle">个人<br>发展历程</div>
+            <button class="explore-btn" id="exploreBtn">探索更多</button>
+            <div class="year-content" id="year2002">
+                <div class="year-big-title">2002</div>
+                <div class="year-sub-title">河北出生，如今23岁</div>
+            </div>
+            <div class="year-content" id="year2017">
+                <div class="year-big-title">2017</div>
+                <div class="year-sub-title">就读艺术高中，学习素描、速写、水粉等基础科目</div>
+            </div>
+            <div class="year-content" id="year2020">
+                <div class="year-big-title">2020</div>
+                <div class="year-sub-title">进入西南交通大学，学习产品设计，主修交互设计、智能产品设计、设计思维等</div>
+            </div>
+            <div class="year-content" id="year2022">
+                <div class="year-big-title">2022</div>
+                <div class="year-sub-title">常州固立装备创新有限公司，任UI设计实习生，开发ToC产品</div>
+            </div>
+            <div class="year-content" id="year2024">
+                <div class="year-big-title">2024</div>
+                <div class="year-sub-title">江苏擎天工业互联网有限公司，人UI/UX设计师，主要负责B端UI、可视化大屏、Web网页等设计工作</div>
+            </div>
+            <div class="year-content" id="year2026">
+                <div class="year-big-title">2026</div>
+                <div class="year-sub-title">积累了丰富的设计经验，专注于用户体验</div>
+            </div>
+            <div class="timeline-container">
+                <button class="timeline-arrow" id="prevBtn">&#8249;</button>
+                <div class="timeline-wrapper">
+                    <div class="timeline-line"></div>
+                    <div class="timeline" id="timeline">
+                        <div class="timeline-node active" data-index="0">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">Start</span>
+                        </div>
+                        <div class="timeline-node" data-index="1">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">2002</span>
+                        </div>
+                        <div class="timeline-node" data-index="2">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">2017</span>
+                        </div>
+                        <div class="timeline-node" data-index="3">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">2020</span>
+                        </div>
+                        <div class="timeline-node" data-index="4">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">2022</span>
+                        </div>
+                        <div class="timeline-node" data-index="5">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">2024</span>
+                        </div>
+                        <div class="timeline-node" data-index="6">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">2026</span>
+                        </div>
+                        <div class="timeline-node" data-index="7">
+                            <div class="timeline-dot"></div>
+                            <span class="timeline-year">now</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="timeline-arrow" id="nextBtn">&#8250;</button>
+            </div>
+        </div>
+        
+        <div class="about-content">
+            <div>
+                <h2 class="section-title">关于我</h2>
+                <div class="about-text">
+                    <p>我是一名拥有5年经验的UI/UX设计师，专注于创造美观且实用的数字产品。我热爱解决复杂的设计问题，善于将用户需求转化为直观的界面设计。</p>
+                    <p>我的设计理念是"以用户为中心"，注重细节和用户体验。我擅长B端界面设计、数据可视化和响应式设计，并且熟悉现代前端技术栈。</p>
+                </div>
+                
+                <div class="skills">
+                    <h3>掌握技能</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Sketch</span>
+                        <span class="skill-tag">Adobe XD</span>
+                        <span class="skill-tag">Photoshop</span>
+                        <span class="skill-tag">Illustrator</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">用户研究</span>
+                        <span class="skill-tag">原型设计</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="timeline">
+                    <h3>工作经历</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 - 至今</div>
+                        <div class="timeline-title">高级UI/UX设计师</div>
+                        <div class="timeline-description">某科技公司 - 负责产品界面设计和用户体验优化</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - 2022</div>
+                        <div class="timeline-title">UI设计师</div>
+                        <div class="timeline-description">互联网公司 - 参与移动应用和Web端界面设计</div>
+                    </div>
+                </div>
+                
+                <div class="timeline">
+                    <h3>学习经历</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2016 - 2020</div>
+                        <div class="timeline-title">视觉传达设计学士</div>
+                        <div class="timeline-description">某大学 - 专注于交互设计和用户体验</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 UI/UX 项目集. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <!-- 底部导航栏（仅在手机上显示） -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-container">
+            <a href="#" class="bottom-nav-item active" data-target="hero">
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </span>
+                <span class="bottom-nav-text">首页</span>
+            </a>
+            <a href="#" class="bottom-nav-item" data-target="projects">
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <path d="M16 3v4"></path>
+                        <path d="M8 3v4"></path>
+                        <path d="M3 10h18"></path>
+                    </svg>
+                </span>
+                <span class="bottom-nav-text">项目</span>
+            </a>
+            <a href="#" class="bottom-nav-item" data-target="blog">
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </span>
+                <span class="bottom-nav-text">博文</span>
+            </a>
+            <a href="#" class="bottom-nav-item" data-target="about">
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </span>
+                <span class="bottom-nav-text">关于</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- 联系图标按钮 -->
+    <div class="contact-icons">
+        <div class="contact-item">
+            <a href="javascript:void(0);" class="contact-icon wechat" data-copy="15333237395">
+            <svg t="1776611278040" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5747" width="24" height="24"><path d="M873.202 776.004c39.796-36.367 63.946-84.144 63.946-136.467 0-91.062-73.137-168.335-174.607-195.706-6.052-145.915-154.579-262.711-336.947-262.711-186.21 0-337.163 121.764-337.163 271.968 0 68.974 31.833 131.953 84.293 179.895 16.417 15.003-2.804 56.059-26.417 89.977 39.906-11.022 82.471-18.196 119.732-18.196 17.445 0 33.731 1.575 48.03 5.062 34.908 9.865 72.437 15.231 111.523 15.231 7.591 0 15.12-0.225 22.589-0.624 40.125 71.599 129.444 121.424 233.191 121.424 29.65 0 58.123-4.069 84.603-11.556 10.848-2.646 23.199-3.84 36.435-3.84 28.265 0 60.556 5.443 90.83 13.804-17.91-25.73-32.492-56.871-20.037-68.255zM425.595 675.377c-33.675 0-66.651-4.494-98.011-13.359l-0.866-0.244-0.874-0.214c-17.618-4.299-37.738-6.478-59.801-6.478-12.681 0-25.347 0.699-37.732 1.888 2.629-29.109-8.524-48.277-22.071-60.659-21.881-19.995-38.877-42.477-50.515-66.818-11.687-24.446-17.616-50.153-17.616-76.405 0-57.328 28.506-111.892 80.265-153.645 26.429-21.317 57.391-38.117 92.023-49.934 36.391-12.417 75.15-18.711 115.199-18.711s78.807 6.295 115.199 18.711c34.633 11.815 65.594 28.617 92.023 49.934 46.193 37.262 73.845 84.732 79.261 135.26 0.001 0 0.001 0 0.002 0-10.069-0.971-20.314-1.486-30.708-1.486-141.263 0-255.777 92.371-255.777 206.321 0 12.21 1.326 24.174 3.847 35.803-0.001-0.002-0.001-0.002-0.001-0.004-1.285 0.014-2.565 0.041-3.847 0.041zM839.686 739.338c-8.029 7.34-18.617 20.825-20.541 41.932-5.547-0.315-11.14-0.489-16.737-0.489-17.695 0-33.914 1.769-48.207 5.257l-0.874 0.214-0.867 0.242c-22.731 6.427-46.646 9.683-71.089 9.683-29.06 0-57.162-4.561-83.52-13.551-24.941-8.51-47.2-20.576-66.153-35.865-36.388-29.353-56.429-67.431-56.429-107.222 0-39.795 20.041-77.874 56.429-107.226 18.955-15.29 41.211-27.355 66.153-35.865 26.358-8.993 54.46-13.552 83.52-13.552s57.161 4.561 83.519 13.552c24.942 8.512 47.201 20.576 66.154 35.865 36.388 29.351 56.428 67.43 56.428 107.226 0 18.112-4.101 35.873-12.19 52.789-8.162 17.069-20.138 32.887-35.596 47.011zM277.639 399.92c0.27-28.671 18.21-51.777 40.304-51.777 22.26 0 40.306 23.46 40.306 52.398 0 28.94-18.045 52.398-40.306 52.398-22.094 0-40.033-23.107-40.302-51.744zM487.295 399.92c0.27-28.671 18.21-51.777 40.302-51.777 22.259 0 40.305 23.46 40.305 52.398 0 28.94-18.045 52.398-40.305 52.398-22.092 0-40.032-23.107-40.301-51.744zM580.218 601.195c0.27-22.034 14.074-39.763 31.061-39.763 17.156 0 31.065 18.08 31.065 40.384 0 22.304-13.908 40.384-31.065 40.384-16.988 0-30.791-17.729-31.061-39.73zM729.874 601.195c0.27-22.034 14.074-39.763 31.062-39.763 17.156 0 31.067 18.08 31.067 40.384 0 22.304-13.909 40.384-31.067 40.384-16.989 0-30.794-17.729-31.062-39.73z" fill="currentColor" p-id="5748"></path></svg>
+        </a>
+            <div class="wechat-card">
+                <img src="images/wechat.png" alt="微信二维码" class="wechat-qr">
+                <p class="wechat-id">15333237395</p>
+            </div>
+        </div>
+        <div class="contact-item">
+            <a href="javascript:void(0);" class="contact-icon email" data-copy="15333237395@163.com">
+                <svg t="1776611655038" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="21237" width="24" height="24"><path d="M801.168 180.784H224.787c-59.756 0-108.134 48.353-108.134 107.959v444.603c0 59.705 48.403 108.034 108.134 108.034h576.381c59.755 0 108.132-48.379 108.132-108.034V288.744c0-59.657-48.377-107.96-108.132-107.96z m-162.25 290.738l216.365-166.083v427.413l-216.365-261.33z m162.25-236.696c14.593 0 27.75 5.887 37.445 15.235L508.426 503.576 187.885 250.061c-0.099-0.073-0.223-0.099-0.322-0.148 9.721-9.25 22.729-15.087 37.224-15.087h576.381zM170.671 732.951V305.34l216.761 171.425-216.761 256.186z m54.116 54.362c-8.78 0-16.745-2.572-24.09-6.232L429.85 510.303l61.585 48.723c9.695 7.668 23.373 7.768 33.216 0.198l71.381-54.783L825.11 781.13c-7.272 3.661-15.236 6.183-23.941 6.183H224.787z" fill="currentColor" p-id="21238"></path></svg>
+            </a>
+            <div class="contact-card email-card">
+                <p class="contact-text">15333237395@163.com</p>
+            </div>
+        </div>
+        <div class="contact-item">
+            <a href="javascript:void(0);" class="contact-icon phone" data-copy="15333237395">
+                <svg t="1776611960226" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="31150" width="24" height="24"><path d="M686.6 928.4c-21.7 0-44.1-2.6-66.2-8.2-106.7-26.5-208-83.5-285.2-160.3-76.8-77.4-133.8-178.7-160.4-285.4-26.1-104.8 13.6-214.5 85-234.8 37.5-10.3 97.6 5.6 173 140.2l4.8 8.5c20.7 36 14.2 49.1-9.4 85.2-6.1 9.3-14 21.3-23.9 37.6-8.9 14.6 6.4 43.5 13 52.4 0.4 0.6 0.8 1.2 1.2 1.7 0.2 0.4 23.8 37.1 49.2 62.7 25.3 25.3 61.9 48.6 62.2 48.8l1.8 1.2c10.9 7.9 38.3 21.5 52.5 12.9 16.3-10 28.4-17.9 37.7-24 35.9-23.6 49-30 85-9.1l8.2 4.7c133.4 74.9 149.8 135 140.1 172.1 0 0.2-0.1 0.3-0.1 0.5-15.9 56.6-87.5 93.3-168.5 93.3zM277 298.7h-0.8c-26.9 7.6-63.5 74.5-42 160.8 24 96.1 75.3 187.4 144.3 256.9 69.3 69 160.6 120.2 256.7 144.1 84.6 21.3 152.7-15.3 160.6-41.8 2.2-9.6-13.5-48.2-110.8-102.9-3.4-1.9-6.4-3.6-9.1-5.2-1.5-0.9-3.2-1.9-4.7-2.7-4 2.4-9.9 6.3-15.7 10.1-9.7 6.4-22.4 14.7-39.5 25.1-51 31-109.7-7.9-119.9-15.2-6.3-4.1-43.8-28.6-72-56.8-28.2-28.4-52.9-65.9-56.9-72.1-7.3-10.2-46.5-69-15.3-120 10.4-16.9 18.6-29.5 24.9-39.1 3.9-6 7.9-12 10.3-16.1-0.9-1.6-1.9-3.3-2.8-4.9-1.6-2.7-3.3-5.8-5.2-9.2-59.6-106.2-96.3-111-102.1-111z m548.4 528.1h0.1-0.1z" fill="currentColor" p-id="31151"></path><path d="M558.1 387.1c-15.7 0-29.1-12-30.5-27.9-6.1-67.4-60.5-98.4-61-98.7-14.8-8.2-20.1-26.9-11.9-41.7 8.2-14.8 26.9-20.2 41.7-11.9 3.4 1.9 83.3 47.4 92.3 146.8 1.5 16.9-10.9 31.8-27.8 33.3-0.9 0.1-1.8 0.1-2.8 0.1zM680.8 377.9c-16.3 0-29.9-12.8-30.6-29.3-6.7-146-118-193.5-119.1-193.9-15.7-6.4-23.1-24.4-16.7-40 6.5-15.7 24.4-23.2 40.1-16.7 6.1 2.5 148.6 63.2 157 247.8 0.8 16.9-12.3 31.3-29.2 32.1h-1.5z" fill="currentColor" p-id="31152"></path></svg>
+            </a>
+            <div class="contact-card phone-card">
+                <p class="contact-text">15333237395</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 复制成功提示框 -->
+    <div id="copy-toast" class="copy-toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-text">复制成功</span>
+    </div>
+
+    <script>
+        // 复制功能和提示框
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactIcons = document.querySelectorAll('.contact-icon');
+            const toast = document.getElementById('copy-toast');
+
+            contactIcons.forEach(icon => {
+                icon.addEventListener('click', function() {
+                    const textToCopy = this.getAttribute('data-copy');
+                    
+                    // 创建临时文本区域
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    textArea.style.top = '-999999px';
+                    document.body.appendChild(textArea);
+                    
+                    // 选择并复制文本
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        // 执行复制
+                        document.execCommand('copy');
+                        
+                        // 显示提示框
+                        toast.classList.add('show');
+                        
+                        // 3秒后隐藏提示框
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 3000);
+                    } catch (err) {
+                        console.error('复制失败:', err);
+                    } finally {
+                        // 清理临时文本区域
+                        document.body.removeChild(textArea);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
