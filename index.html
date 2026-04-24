@@ -27,7 +27,16 @@
             <div class="hero-text">
                 <h1>UI/UX 设计师</h1>
                 <p>专注于创造美观且易用的数字产品体验，擅长B端界面设计、数据可视化和用户体验优化。</p>
-                <a href="#about" class="btn">了解更多</a>
+                <div class="hero-btns">
+                    <a href="#about" class="btn">了解更多</a>
+                    <div class="dropdown">
+                        <button class="btn download-btn dropdown-toggle">下载附件</button>
+                        <div class="dropdown-menu">
+                            <a href="images/home/个人简历.pdf" download="个人简历.pdf" class="dropdown-item">下载简历</a>
+                            <a href="images/home/个人简历.pdf" download="个人作品集.pdf" class="dropdown-item">下载作品集</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -67,7 +76,7 @@
             <h2 class="section-title">最新博文</h2>
             <div class="blog-list">
                 <div class="blog-item" data-blog-id="1">
-                    <h3 class="blog-title">【从奇瑞项目谈B端设计的简约之道】</h3>
+                    <h3 class="blog-title">从奇瑞项目谈B端设计的简约之道</h3>
                     <div class="blog-meta">
                         <span class="blog-date">2024-04-15</span>
                         <div class="blog-tags">
@@ -77,13 +86,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="blog-item">
-                    <h3 class="blog-title">如何提升用户体验</h3>
+                <div class="blog-item" data-blog-id="2">
+                    <h3 class="blog-title">“-” 在B端系统的使用</h3>
                     <div class="blog-meta">
                         <span class="blog-date">2024-04-10</span>
                         <div class="blog-tags">
+                            <span class="blog-tag">B端设计</span>
+                            <span class="blog-tag">表格设计</span>
                             <span class="blog-tag">用户体验</span>
-                            <span class="blog-tag">设计流程</span>
                         </div>
                     </div>
                 </div>
@@ -202,7 +212,10 @@
             </div>
             <div class="timeline-mask"></div>
             <div class="timeline-main-title" id="timelineTitle">个人<br>发展历程</div>
-            <button class="explore-btn" id="exploreBtn">探索更多</button>
+            <div class="btn-container">
+                <button class="explore-btn" id="exploreBtn">探索更多</button>
+                <a href="个人简历.pdf" download="个人简历.pdf" class="download-btn">下载简历</a>
+            </div>
             <div class="year-content" id="year2002">
                 <div class="year-big-title">2002</div>
                 <div class="year-sub-title">河北出生，如今23岁</div>
@@ -446,6 +459,21 @@
                     } finally {
                         // 清理临时文本区域
                         document.body.removeChild(textArea);
+                    }
+                });
+            });
+        });
+        
+        // 博文点击事件
+        document.addEventListener('DOMContentLoaded', function() {
+            const blogItems = document.querySelectorAll('.blog-item');
+            blogItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const blogId = this.getAttribute('data-blog-id');
+                    if (blogId === '1') {
+                        window.open('blog1.html', '_blank');
+                    } else if (blogId === '2') {
+                        window.open('blog2.html', '_blank');
                     }
                 });
             });

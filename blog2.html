@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在B端系统的使用 - B端表格设计</title>
+    <style>
+        /* 整体页面样式 */
+        body {
+            background-color: #f9f8f7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            user-select: text;
+            cursor: auto;
+        }
+        
+        /* 确保所有元素都允许文本选择 */
+        * {
+            user-select: text;
+            cursor: auto;
+        }
+        
+        /* 手机端导航栏 */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            height: 48px;
+            padding: 0 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mobile-nav .back-btn {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .mobile-nav .toc-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        /* 手机端目录弹窗 */
+        .mobile-toc {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 110;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-toc .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-toc .toc-header h3 {
+            margin: 0;
+        }
+        
+        .mobile-toc .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .mobile-toc li {
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-toc a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        /* 容器样式 */
+        .blog-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* 标题和元信息 */
+        .blog-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background-color: #eae7e3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+        
+        /* 主要内容区域 */
+        .blog-content-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        /* 文章内容 */
+        .blog-content {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem;
+            border-radius: 8px;
+        }
+        
+        /* 目录 */
+        .blog-toc {
+            position: fixed;
+            top: 8rem;
+            left: 5%;
+            width: 16rem;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+        
+        .blog-toc h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .blog-toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .blog-toc li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .blog-toc a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        
+        .blog-toc a:hover {
+            color: #333;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .blog-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content th,
+        .blog-content td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+        }
+        
+        .blog-content th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        /* 页脚 */
+        .footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .blog-toc {
+                position: static;
+                width: 100%;
+                max-width: 800px;
+                margin: 0 auto 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-detail-container {
+                padding: 2rem 1rem;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            .blog-content {
+                padding: 2rem;
+            }
+            
+            .blog-toc {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* 调整页面顶部间距以适应手机端导航栏 */
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: flex;
+            }
+            
+            .blog-detail-container {
+                padding-top: 4rem;
+            }
+            
+            .blog-toc {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 手机端导航栏 -->
+    <div class="mobile-nav">
+        <a href="index.html#blog" class="back-btn">← 返回</a>
+        <button class="toc-btn">目录</button>
+    </div>
+    
+    <!-- 手机端目录弹窗 -->
+    <div class="mobile-toc">
+        <div class="toc-header">
+            <h3>目录</h3>
+            <button class="close-btn">×</button>
+        </div>
+        <ul>
+            <li><a href="#difference">一、先明确："--" vs 友好提示的核心差异</a></li>
+            <li><a href="#theoretical">二、用"--"作为无数据占位符的理论支撑</a></li>
+            <li><a href="#gestalt">1. 格式塔心理学（格式统一原则）</a></li>
+            <li><a href="#hierarchy">2. 信息层级优先级原则</a></li>
+            <li><a href="#industry">3. 行业惯例与用户认知共识</a></li>
+            <li><a href="#accuracy">4. 数据准确性原则</a></li>
+            <li><a href="#specification">三、"--"占位符的使用规范（B端重点场景）</a></li>
+            <li><a href="#applicable">1. 适用场景（必须满足以下条件）</a></li>
+            <li><a href="#not-applicable">2. 不适用场景（需用友好提示替代）</a></li>
+            <li><a href="#visual">3. 视觉与格式规范</a></li>
+            <li><a href="#copywriting">4. 文案补充规范（特殊情况）</a></li>
+            <li><a href="#examples">四、示例：正确vs错误用法</a></li>
+            <li><a href="#correct">正确用法（表格部分字段无数据）</a></li>
+            <li><a href="#wrong1">错误用法（整表无数据用"--"）</a></li>
+            <li><a href="#wrong2">错误用法（数据为0用"--"）</a></li>
+            <li><a href="#summary">总结</a></li>
+        </ul>
+    </div>
+    
+    <!-- 博文详情 -->
+    <div class="blog-detail-container">
+        <div class="blog-header">
+            <h1 class="blog-title">”-“ 在B端系统的使用</h1>
+            <div class="blog-meta">
+                <span class="blog-date">更新时间：2024-04-10</span>
+                <span class="blog-tags">
+                    <span class="tag">B端设计</span>
+                    <span class="tag">表格设计</span>
+                    <span class="tag">用户体验</span>
+                </span>
+            </div>
+        </div>
+        
+        <div class="blog-content-wrapper">
+            <div class="blog-content">
+            
+            <p>在B端表格设计中，用"--"表示无数据不属于严格意义上的"友好提示"，更偏向"数据占位符"的设计选择——核心作用是明确传递"该字段存在但暂无数据"的状态，而非主动引导用户操作或解释无数据原因。其设计逻辑源于B端产品的核心诉求，而非"友好提示"的用户体验导向，具体理论支撑和边界区分如下：</p>
+            
+            <h2 id="difference">一、先明确："--" vs 友好提示的核心差异</h2>
+            <p>友好提示的核心是<span style="font-weight: 600;">"解释原因+引导行动"</span>（如"暂无订单数据，点击创建新订单"），而"--"的核心是<span style="font-weight: 600;">"状态标识+格式统一"</span>，两者的区别可通过表格清晰区分：</p>
+            
+            <table>
+                <tr>
+                    <th>维度</th>
+                    <th>"--" 占位符</th>
+                    <th>友好提示（空状态提示）</th>
+                </tr>
+                <tr>
+                    <td>核心目标</td>
+                    <td>明确"字段有定义但无数据"，避免用户误解为系统故障或字段缺失</td>
+                    <td>告知无数据原因，引导用户执行下一步操作</td>
+                </tr>
+                <tr>
+                    <td>适用场景</td>
+                    <td>表格中部分字段无数据（其他字段有数据）、临时无数据（如未统计完成）</td>
+                    <td>整表无数据（如首次使用、筛选后无结果）、关键功能无数据</td>
+                </tr>
+                <tr>
+                    <td>内容形式</td>
+                    <td>纯符号占位，无额外文字/操作</td>
+                    <td>文字说明+图标（可选）+ 快捷操作按钮</td>
+                </tr>
+                <tr>
+                    <td>用户体验导向</td>
+                    <td>效率优先，降低信息识别成本</td>
+                    <td>友好优先，降低用户困惑和操作门槛</td>
+                </tr>
+            </table>
+            
+            <h2 id="theoretical">二、用"--"作为无数据占位符的理论支撑</h2>
+            <p>B端表格设计的核心诉求是<span style="font-weight: 600;">"数据清晰、格式统一、高效浏览"</span>，"--"的使用正是围绕这一核心，背后有3个关键理论/原则支撑：</p>
+            
+            <h3 id="gestalt">1. 格式塔心理学（格式统一原则）</h3>
+            <p>B端表格常承载大量结构化数据（如报表、订单列表），用户浏览时依赖"视觉一致性"快速扫描信息。如果某字段无数据时留空，会导致表格布局错乱、视觉断点，用户可能误以为是"数据未加载"或"字段遗漏"；而"--"作为统一的占位符，能填补视觉空白，保持表格行列对齐、格式统一，降低用户的认知负荷。</p>
+            
+            <h3 id="hierarchy">2. 信息层级优先级原则</h3>
+            <p>B端用户的核心需求是"获取有效数据"，无数据字段属于"低优先级信息"。如果用冗长的文字提示（如"该字段暂无数据"），会占用表格空间，干扰核心数据的阅读；"--"符号简洁无干扰，既传递了"无数据"的状态，又不抢夺有效数据的视觉焦点，符合"次要信息弱化处理"的设计逻辑。</p>
+            
+            <h3 id="industry">3. 行业惯例与用户认知共识</h3>
+            <p>在B端产品（如ERP、数据分析平台、财务系统）中，"--"已成为约定俗成的无数据标识，类似"NaN"在数据统计中的作用。用户长期使用后形成了"看到--即无数据"的认知习惯，无需额外学习成本，比自定义图标或文字更高效（避免用户困惑"这个图标是什么意思"）。</p>
+            
+            <h3 id="accuracy">4. 数据准确性原则</h3>
+            <p>B端表格需严格区分"无数据""数据为0""数据未统计"三种状态：</p>
+            <ul>
+                <li>数据为0：显示"0"（如"成交金额：0元"），表示有明确数值结果；</li>
+                <li>无数据：显示"--"（如"成交金额：--"），表示该字段无相关记录（如未成交）；</li>
+                <li>数据未统计：显示"统计中"（搭配加载动画），表示数据正在计算中。</li>
+            </ul>
+            <p>"--"的使用能精准规避"无数据"与"0值"的混淆，保障数据传递的准确性（这对财务、运维等对数据精度要求高的场景至关重要）。</p>
+            
+            <h2 id="specification">三、"--"占位符的使用规范（B端重点场景）</h2>
+            
+            <h3 id="applicable">1. 适用场景（必须满足以下条件）</h3>
+            <ul>
+                <li>表格中<span style="font-weight: 600;">单个/部分字段</span>无数据，且其他字段有有效数据（整表无数据需用友好提示，而非"--"）；</li>
+                <li>数据是"暂时缺失"或"逻辑上不存在"（如未成交订单的"成交时间"字段、未分配任务的"负责人"字段）；</li>
+                <li>无需用户干预，仅需告知状态（如统计报表中未产生数据的维度）。</li>
+            </ul>
+            
+            <h3 id="not-applicable">2. 不适用场景（需用友好提示替代）</h3>
+            <ul>
+                <li>整表无数据（如首次使用系统时的订单列表、筛选条件过严导致无结果）；</li>
+                <li>数据缺失是用户操作导致（如未上传文件、未填写表单导致的关联字段无数据）；</li>
+                <li>需要引导用户执行下一步操作（如"无数据，点击添加"）；</li>
+                <li>特殊异常状态（如数据加载失败、权限不足导致无法显示数据）。</li>
+            </ul>
+            
+            <h3 id="visual">3. 视觉与格式规范</h3>
+            <ul>
+                <li>样式统一："--"的字体、字号、颜色需与表格正文一致，颜色建议用浅灰色（#999999或#CCCCCC），避免与有效数据（深灰色/黑色）混淆；</li>
+                <li>位置居中："--"需在表格单元格内水平+垂直居中，与其他数据的对齐方式保持一致（如数值字段右对齐，则"--"也右对齐）；</li>
+                <li>避免冗余：无需搭配图标或额外文字，仅用"--"即可，除非字段需特别说明（如"备注"字段无数据时，可显示"-- 无备注"，但需保持简洁）；</li>
+                <li>响应式适配：移动端表格中，"--"需适配单元格宽度，不换行、不溢出，确保小屏上仍清晰可见。</li>
+            </ul>
+            
+            <h3 id="copywriting">4. 文案补充规范（特殊情况）</h3>
+            <p>如果字段无数据可能引发用户困惑（如专业术语字段、关键业务字段），可在"--"旁补充极简说明（hover时显示 tooltip），例如：</p>
+            <ul>
+                <li>字段"光伏组件转换效率"显示"--"，hover提示"该批次组件未完成检测，暂无数据"；</li>
+                <li>字段"合同到期时间"显示"--"，hover提示"该合同为长期有效，无到期时间"。</li>
+            </ul>
+            
+            <h2 id="examples">四、示例：正确vs错误用法</h2>
+            
+            <h3 id="correct">正确用法（表格部分字段无数据）</h3>
+            <table>
+                <tr>
+                    <th>订单号</th>
+                    <th>客户名称</th>
+                    <th>成交金额</th>
+                    <th>成交时间</th>
+                    <th>负责人</th>
+                </tr>
+                <tr>
+                    <td>OD202501</td>
+                    <td>A公司</td>
+                    <td>5000元</td>
+                    <td>2025-06-01</td>
+                    <td>张三</td>
+                </tr>
+                <tr>
+                    <td>OD202502</td>
+                    <td>B公司</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>李四</td>
+                </tr>
+                <tr>
+                    <td>OD202503</td>
+                    <td>C公司</td>
+                    <td>8000元</td>
+                    <td>2025-06-03</td>
+                    <td>--</td>
+                </tr>
+            </table>
+            
+            <h3 id="wrong1">错误用法（整表无数据用"--"）</h3>
+            <table>
+                <tr>
+                    <th>订单号</th>
+                    <th>客户名称</th>
+                    <th>成交金额</th>
+                    <th>成交时间</th>
+                    <th>负责人</th>
+                </tr>
+                <tr>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>--</td>
+                </tr>
+            </table>
+            <p>（错误：整表无数据应显示"暂无订单数据，点击创建新订单"+ 图标 + 按钮）</p>
+            
+            <h3 id="wrong2">错误用法（数据为0用"--"）</h3>
+            <table>
+                <tr>
+                    <th>产品名称</th>
+                    <th>月销量</th>
+                    <th>库存数量</th>
+                </tr>
+                <tr>
+                    <td>产品A</td>
+                    <td>120</td>
+                    <td>--</td>
+                </tr>
+            </table>
+            <p>（错误：库存数量为0应显示"0"，而非"--"）</p>
+            
+            <h2 id="summary">总结</h2>
+            <p>B端表格中"--"的核心定位是<span style="font-weight: 600;">"无数据状态的简洁占位符"</span>，其使用规范的本质是"在不干扰核心数据阅读的前提下，准确传递无数据状态"。它与友好提示的区别在于：前者侧重"格式统一、信息高效传递"，后者侧重"解释原因、引导用户操作"。</p>
+            <p>实际设计中需把握核心原则：<span style="font-weight: 600;">部分字段无数据→用"--"，整表无数据/需引导操作→用友好提示</span>，同时保持视觉统一、数据准确，契合B端用户"高效、严谨"的使用诉求。</p>
+        </div>
+        
+        <div class="blog-toc">
+            <h3>目录</h3>
+            <ul>
+                <li><a href="#difference">一、- 与友好提示的核心差异</a></li>
+                <li><a href="#theoretical">二、理论支撑</a></li>
+                <li><a href="#gestalt">1. 格式塔心理学（格式统一原则）</a></li>
+                <li><a href="#hierarchy">2. 信息层级优先级原则</a></li>
+                <li><a href="#industry">3. 行业惯例与用户认知共识</a></li>
+                <li><a href="#accuracy">4. 数据准确性原则</a></li>
+                <li><a href="#specification">三、使用规范</a></li>
+                <li><a href="#applicable">1. 适用场景</a></li>
+                <li><a href="#not-applicable">2. 不适用场景</a></li>
+                <li><a href="#visual">3. 视觉与格式规范</a></li>
+                <li><a href="#copywriting">4. 文案补充规范</a></li>
+                <li><a href="#examples">四、示例：正确vs错误用法</a></li>
+                <li><a href="#correct">正确用法</a></li>
+                <li><a href="#wrong1">错误用法1</a></li>
+                <li><a href="#wrong2">错误用法2</a></li>
+                <li><a href="#summary">总结</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // 目录联动功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocLinks = document.querySelectorAll('.blog-toc a, .mobile-toc a');
+            const sections = document.querySelectorAll('.blog-content h2, .blog-content h3');
+            const mobileToc = document.querySelector('.mobile-toc');
+            const tocBtn = document.querySelector('.toc-btn');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            // 点击目录项跳转到对应章节
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 关闭手机端目录弹窗
+                        mobileToc.style.display = 'none';
+                    }
+                });
+            });
+            
+            // 滚动时更新目录高亮
+            function updateActiveNav() {
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 150) {
+                        currentSection = section.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.style.color = '';
+                    link.style.fontWeight = '';
+                    
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.style.color = '#1a1a1a';
+                        link.style.fontWeight = '600';
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav();
+            
+            // 手机端目录控制
+            if (tocBtn && closeBtn && mobileToc) {
+                tocBtn.addEventListener('click', function() {
+                    mobileToc.style.display = 'block';
+                });
+                
+                closeBtn.addEventListener('click', function() {
+                    mobileToc.style.display = 'none';
+                });
+                
+                // 点击目录项后关闭弹窗
+                const mobileTocLinks = document.querySelectorAll('.mobile-toc a');
+                mobileTocLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileToc.style.display = 'none';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

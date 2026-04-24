@@ -201,16 +201,94 @@ body {
     margin-bottom: 2rem;
 }
 
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 0.75rem 1.5rem;
     background-color: var(--primary-color);
     color: white;
     text-decoration: none;
     border-radius: 0.5rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: all 0.3s ease;
 }
+
+.dropdown-toggle::after {
+    content: '▼';
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: normal;
+    transform: scale(0.8);
+}
+
+.btn.download-btn {
+    background-color: white;
+    border: 1px solid white;
+    color: #111827;
+}
+
+.btn.download-btn:hover {
+    background-color: #f3f4f6;
+    border-color: white;
+    color: #111827;
+}
+
+/* 下拉菜单 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 0.5rem 0;
+    min-width: 150px;
+    z-index: 1000;
+    display: none;
+    margin-top: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    color: #111827;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f3f4f6;
+}
+
+/* 统一按钮样式 */
 
 .btn:hover {
     background-color: var(--secondary-color);

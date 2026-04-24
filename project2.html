@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江苏省零碳园区可视化大屏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            background-color: #000000;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; height: 140px; background-color: white; display: flex; flex-direction: column; justify-content: center; padding: 0; box-sizing: border-box;">
+        <div style="width: 1000px; margin: 0 auto;">
+        <h1 style="font-size: 32px; font-family: 'PingFang SC', 'PingFang', sans-serif; font-weight: normal; margin: 0 0 10px 0;">江苏省零碳园区可视化大屏</h1>
+        <p style="font-size: 18px; color: #666666; margin: 8px 0 0 0 ;">时间：2026&nbsp;&nbsp;&nbsp;&nbsp;客户类别：ToG侧</p>
+        </div>
+    </div>
+    <div style="width: 100%; padding: 40px 0; box-sizing: border-box; color: white; font-size: 16px; line-height: 1.8; font-family: 'PingFang SC', 'PingFang', sans-serif;">
+        <div style="width: 1000px; margin: 0 auto;">
+        <div style="margin-bottom: 28px;">
+            <p style="margin: 0 0 8px 0;"><strong>【设计说明】</strong></p>
+            <p style="margin: 0;">零碳园区驾驶舱面向园区级碳管理与低碳运营场景，以实现碳数据可视、可管、可控为核心目标，通过全场景三维可视化、多维度指标看板与层级联动交互模块，将分散的能源、排放、能效、企业运营数据整合为统一的决策视图，打通从园区宏观态势感知到企业微观数据溯源的管理路径，构建 "态势总览 - 分区洞察 - 企业穿透" 的一体化碳管理闭环。</p>
+        </div>
+        <div style="margin-bottom: 28px;">
+            <p style="margin: 0 0 8px 0;"><strong>【项目复盘】</strong></p>
+            <p style="margin: 0 0 8px 0;">本次设计聚焦两大核心目标：</p>
+            <p style="margin: 0 0 8px 0;">·构建从宏观园区态势感知到微观企业碳数据溯源的完整用户体验路径；</p>
+            <p style="margin: 0;">·重组多模块间的数据分析流程，消解操作割裂与信息断层，实现园区碳管理的全链路可视化支撑。</p>
+        </div>
+        <div style="margin-bottom: 28px;">
+            <p style="margin: 0 0 8px 0;"><strong>【演示说明】</strong></p>
+            <p style="margin: 0 0 8px 0;">内容包含多层级交互联动演示：从园区全域态势地图，到分区产业集群三维场景，再到单企业能耗排放明细弹窗，支持层层下钻与一键回退；</p>
+            <p style="margin: 0 0 8px 0;">·数据与业务场景已做脱敏处理，所有指标、企业名称均为模拟数据；</p>
+            <p style="margin: 0;">·受静态图片格式限制，部分动态交互细节（如地图缩放、数据联动、弹窗动效）无法完整呈现，如需体验完整交互逻辑，可结合设计原型或动效演示进行查看。</p>
+        </div>
+        <div style="margin-top: 20px;">
+            <img src="images/home/江苏省零碳园区可视化大屏/cover.gif" alt="江苏省零碳园区可视化大屏" style="width: 100%; height: auto;">
+        </div>
+        <div style="margin-top: 20px;">
+            <video id="projectVideo" src="images/home/江苏省零碳园区可视化大屏/all.mp4" controls style="width: 100%; height: auto;"></video>
+        </div>
+        <script>
+            document.getElementById('projectVideo').addEventListener('loadedmetadata', function() {
+                this.playbackRate = 1.5;
+            });
+        </script>
+        </div>
+    </div>
+</body>
+</html>

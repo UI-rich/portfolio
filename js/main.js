@@ -10,6 +10,15 @@ const projectsData = [
         category: 'B端UI'
     },
     {
+        id: 4,
+        title: '江苏省零碳园区可视化大屏',
+        image: 'images/home/江苏省零碳园区可视化大屏/江苏省零碳园区可视化大屏.png',
+        tags: ['可视化大屏', '数字孪生', 'AI应用'],
+        description: '江苏省零碳园区可视化大屏，实现园区碳排放实时监测与智能分析',
+        link: 'project2.html',
+        category: '可视化大屏'
+    },
+    {
         id: 2,
         title: '奇瑞汽车可持续发展管理平台',
         image: 'images/home/奇瑞汽车可持续发展管理平台.png',
@@ -53,15 +62,6 @@ const projectsData = [
         description: '设计组件制作与维护，构建可复用的设计系统组件库',
         link: 'about:blank',
         category: '其他'
-    },
-    {
-        id: 4,
-        title: '江苏省零碳园区可视化大屏',
-        image: 'images/home/江苏省零碳园区可视化大屏.png',
-        tags: ['可视化大屏', '数字孪生', 'AI应用'],
-        description: '江苏省零碳园区可视化大屏，实现园区碳排放实时监测与智能分析',
-        link: 'about:blank',
-        category: '可视化大屏'
     }
 ];
 
@@ -83,14 +83,15 @@ function renderFeaturedProjects() {
         const card = document.createElement('div');
         card.className = 'featured-card';
         const isCarbonProject = project.title.includes('碳擎3.0');
+        const isZeroCarbonProject = project.title.includes('江苏省零碳园区');
         
-        if (!isCarbonProject) {
+        if (!isCarbonProject && !isZeroCarbonProject) {
             card.classList.add('has-overlay');
         }
         
         card.innerHTML = `
             <img src="${project.image}" alt="${project.title}" class="featured-img">
-            ${!isCarbonProject ? `
+            ${(!isCarbonProject && !isZeroCarbonProject) ? `
             <div class="coming-soon-overlay">
                 <span class="coming-soon-text">奋力产出中~</span>
             </div>
@@ -106,7 +107,7 @@ function renderFeaturedProjects() {
             </div>
         `;
         
-        if (isCarbonProject) {
+        if (isCarbonProject || isZeroCarbonProject) {
             card.addEventListener('click', function() {
                 window.open(project.link, '_blank');
             });
@@ -152,14 +153,15 @@ function renderAllProjects(category = '全部') {
         const card = document.createElement('div');
         card.className = 'project-card';
         const isCarbonProject = project.title.includes('碳擎3.0');
+        const isZeroCarbonProject = project.title.includes('江苏省零碳园区');
         
-        if (!isCarbonProject) {
+        if (!isCarbonProject && !isZeroCarbonProject) {
             card.classList.add('has-overlay');
         }
         
         card.innerHTML = `
             <img src="${project.image}" alt="${project.title}" class="project-img">
-            ${!isCarbonProject ? `
+            ${(!isCarbonProject && !isZeroCarbonProject) ? `
             <div class="coming-soon-overlay">
                 <span class="coming-soon-text">奋力产出中~</span>
             </div>
@@ -175,7 +177,7 @@ function renderAllProjects(category = '全部') {
             </div>
         `;
         
-        if (isCarbonProject) {
+        if (isCarbonProject || isZeroCarbonProject) {
             card.addEventListener('click', function() {
                 window.open(project.link, '_blank');
             });

@@ -135,6 +135,7 @@
         <a href="#section-1" class="nav-item active" data-section="section-1">项目基础信息</a>
         <a href="#section-2" class="nav-item" data-section="section-2">重构目标</a>
         <a href="#section-3" class="nav-item" data-section="section-3">原子样式</a>
+        <a href="#section-4" class="nav-item" data-section="section-4">页面展示</a>
         <a href="#top" class="nav-item top">回到顶部 ↑</a>
     </nav>
     
@@ -147,6 +148,9 @@
         </div>
         <div id="section-3" class="project-section">
             <img src="images/home/碳擎3.0产品碳数据管理平台/3原子样式.png" alt="原子样式" class="project-image">
+        </div>
+        <div id="section-4" class="project-section">
+            <img src="images/home/碳擎3.0产品碳数据管理平台/4页面展示.png" alt="页面展示" class="project-image">
         </div>
     </div>
     
@@ -165,17 +169,26 @@
             });
         });
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navItems.forEach(item => item.classList.remove('active'));
-                    const activeItem = document.querySelector(`.sidebar .nav-item[data-section="${entry.target.id}"]`);
-                    if (activeItem) activeItem.classList.add('active');
+        function updateActiveNav() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 150) {
+                    currentSection = section.id;
                 }
             });
-        }, { threshold: 0.3 });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === currentSection) {
+                    item.classList.add('active');
+                }
+            });
+        }
         
-        sections.forEach(section => observer.observe(section));
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
     </script>
 </body>
 </html>
