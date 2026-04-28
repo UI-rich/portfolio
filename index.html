@@ -234,7 +234,7 @@
             </div>
             <div class="year-content" id="year2024">
                 <div class="year-big-title">2024</div>
-                <div class="year-sub-title">江苏擎天工业互联网有限公司，人UI/UX设计师，主要负责B端UI、可视化大屏、Web网页等设计工作</div>
+                <div class="year-sub-title">江苏擎天工业互联网有限公司，任UI/UX设计师，主要负责B端UI、可视化大屏、Web网页等设计工作</div>
             </div>
             <div class="year-content" id="year2026">
                 <div class="year-big-title">2026</div>
@@ -283,54 +283,17 @@
             </div>
         </div>
         
-        <div class="about-content">
-            <div>
-                <h2 class="section-title">关于我</h2>
-                <div class="about-text">
-                    <p>我是一名拥有5年经验的UI/UX设计师，专注于创造美观且实用的数字产品。我热爱解决复杂的设计问题，善于将用户需求转化为直观的界面设计。</p>
-                    <p>我的设计理念是"以用户为中心"，注重细节和用户体验。我擅长B端界面设计、数据可视化和响应式设计，并且熟悉现代前端技术栈。</p>
-                </div>
-                
-                <div class="skills">
-                    <h3>掌握技能</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Sketch</span>
-                        <span class="skill-tag">Adobe XD</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">Illustrator</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">用户研究</span>
-                        <span class="skill-tag">原型设计</span>
-                    </div>
-                </div>
+        <div class="about-content" style="background-color: black; width: 100%; min-height: 100vh; padding: 90px 0 90px 120px; box-sizing: border-box; display: flex; align-items: stretch;">
+            <div style="width: 420px; border-right: 1px solid rgba(255, 255, 255, 0.4);">
+                <h1 style="margin-top: 300px; margin-left: 0; font-size: 24px; font-weight: bold; color: white;">用最简单的词汇概括我</h1>
             </div>
-            
-            <div>
-                <div class="timeline">
-                    <h3>工作经历</h3>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022 - 至今</div>
-                        <div class="timeline-title">高级UI/UX设计师</div>
-                        <div class="timeline-description">某科技公司 - 负责产品界面设计和用户体验优化</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2020 - 2022</div>
-                        <div class="timeline-title">UI设计师</div>
-                        <div class="timeline-description">互联网公司 - 参与移动应用和Web端界面设计</div>
-                    </div>
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <div style="height: 60px; display: flex; align-items: center; gap: 80px;">
+                    <span class="tab-item active" data-tab="work" style="font-size: 16px; color: white; padding: 10px 50px; border-radius: 30px; cursor: pointer; background-color: white; color: black;">工作</span>
+                    <span class="tab-item" data-tab="personality" style="font-size: 16px; color: rgba(255, 255, 255, 0.6); cursor: pointer; padding: 10px 50px;">性格</span>
+                    <span class="tab-item" data-tab="life" style="font-size: 16px; color: rgba(255, 255, 255, 0.6); cursor: pointer; padding: 10px 50px;">生活</span>
                 </div>
-                
-                <div class="timeline">
-                    <h3>学习经历</h3>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2016 - 2020</div>
-                        <div class="timeline-title">视觉传达设计学士</div>
-                        <div class="timeline-description">某大学 - 专注于交互设计和用户体验</div>
-                    </div>
-                </div>
+                <div id="tab-content" style="flex: 1; background-color: white; transition: background-color 0.3s ease;"></div>
             </div>
         </div>
     </section>
@@ -475,6 +438,50 @@
                     } else if (blogId === '2') {
                         window.open('blog2.html', '_blank');
                     }
+                });
+            });
+        });
+
+        // Tab切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabItems = document.querySelectorAll('.tab-item');
+            const tabContent = document.getElementById('tab-content');
+
+            const tabColors = {
+                work: 'white',
+                personality: 'red',
+                life: 'blue'
+            };
+
+            tabItems.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有tab的active状态
+                    tabItems.forEach(t => {
+                        t.classList.remove('active');
+                        t.style.backgroundColor = 'transparent';
+                        t.style.color = 'rgba(255, 255, 255, 0.6)';
+                        t.style.border = 'none';
+                    });
+
+                    // 给当前点击的tab添加active状态
+                    this.classList.add('active');
+                    const tabType = this.getAttribute('data-tab');
+                    
+                    if (tabType === 'work') {
+                        this.style.backgroundColor = 'white';
+                        this.style.color = 'black';
+                        this.style.padding = '10px 50px';
+                        this.style.borderRadius = '30px';
+                    } else {
+                        this.style.backgroundColor = 'transparent';
+                        this.style.color = 'white';
+                        this.style.border = '1px solid white';
+                        this.style.borderRadius = '30px';
+                        this.style.padding = '10px 50px';
+                    }
+
+                    // 更新下方区域的背景色
+                    tabContent.style.backgroundColor = tabColors[tabType];
                 });
             });
         });
