@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工作台设计合集</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            background-color: #000000;
+            width: 100%;
+            height: 100%;
+        }
+        /* 图片点击放大样式 */
+        .project-image {
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .image-modal.active {
+            display: flex;
+        }
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; height: 140px; background-color: white; display: flex; flex-direction: column; justify-content: center; padding: 0; box-sizing: border-box;">
+        <div style="width: 1000px; margin: 0 auto;">
+        <h1 style="font-size: 32px; line-height: 1.4; font-family: 'PingFang SC', 'PingFang', sans-serif; font-weight: normal; margin: 0 0 10px 0;">工作台设计合集</h1>
+        <p style="font-size: 18px; line-height: 1.4; color: #666666; margin: 8px 0 0 0; font-family: 'PingFang SC', 'PingFang', sans-serif;">时间：2024年 - 2026年&nbsp;&nbsp;&nbsp;&nbsp;项目类别：B端UI设计</p>
+        </div>
+    </div>
+    <div style="width: 100%; padding: 40px 0; box-sizing: border-box; color: white; font-size: 16px; line-height: 1.8; font-family: 'PingFang SC', 'PingFang', sans-serif;">
+        <div style="width: 1000px; margin: 0 auto;">
+            <div style="margin-bottom: 40px;">
+                <p style="margin: 0 0 16px 0;">工作台是B端产品中最具综合性的页面之一，它承载着业务总览、任务处理、数据反馈与快捷操作等多重角色。</p>
+                <p style="margin: 0 0 16px 0;">优秀的工作台设计，不应只是模块的简单拼接，而应在复杂信息中建立清晰的层级，在多业务场景中提炼核心价值，在有限空间内形成高效的决策路径。</p>
+                <p style="margin: 0 0 16px 0;">本合集将围绕多个行业与业务场景，展示我对工作台页面在信息组织、视觉层级、数据呈现与交互效率上的设计思考。</p>
+                <p style="margin: 0;">希望通过这些案例，呈现B端设计如何从“功能展示”走向“业务赋能”。</p>
+            </div>
+            <div style="margin-top: 80px;">
+                <img src="images/home/工作台设计合集/1伊利.png" alt="伊利" class="project-image" style="width: 100%; height: auto;" loading="lazy">
+                <div style="margin-top: 0; font-size: 16px; text-align: center; color: rgba(255, 255, 255, 0.7);">伊利乳业管理运营平台</div>
+            </div>
+            <div style="margin-top: 80px;">
+                <img src="images/home/工作台设计合集/2奇瑞.png" alt="奇瑞" class="project-image" style="width: 100%; height: auto;" loading="lazy">
+                <div style="margin-top: 0; font-size: 16px; text-align: center; color: rgba(255, 255, 255, 0.7);">奇瑞股份可持续发展管理平台</div>
+            </div>
+            <div style="margin-top: 80px;">
+                <img src="images/home/工作台设计合集/3万华.png" alt="万华" class="project-image" style="width: 100%; height: auto;" loading="lazy">
+                <div style="margin-top: 0; font-size: 16px; text-align: center; color: rgba(255, 255, 255, 0.7);">万华化学智慧碳信息管理平台</div>
+            </div>
+            <div style="margin-top: 80px;">
+                <img src="images/home/工作台设计合集/4台泥.png" alt="台泥" class="project-image" style="width: 100%; height: auto;" loading="lazy">
+                <div style="margin-top: 0; font-size: 16px; text-align: center; color: rgba(255, 255, 255, 0.7);">台湾水泥双碳智慧管控平台</div>
+            </div>
+            <div style="margin-top: 80px;">
+                <img src="images/home/工作台设计合集/5泸州老窖.png" alt="泸州老窖" class="project-image" style="width: 100%; height: auto;" loading="lazy">
+                <div style="margin-top: 0; font-size: 16px; text-align: center; color: rgba(255, 255, 255, 0.7);">泸州老窖低碳业务管理系统</div>
+            </div>
+            <div style="margin-top: 80px;">
+                <img src="images/home/工作台设计合集/6天合光能.png" alt="天合光能" class="project-image" style="width: 100%; height: auto;" loading="lazy">
+                <div style="margin-top: 0; font-size: 16px; text-align: center; color: rgba(255, 255, 255, 0.7);">天合光能产品碳足迹信息管理平台</div>
+            </div>
+            <div style="margin-top: 80px;">
+                <img src="images/home/工作台设计合集/7中汽研.png" alt="中汽研" class="project-image" style="width: 100%; height: auto;" loading="lazy">
+                <div style="margin-top: 0; font-size: 16px; text-align: center; color: rgba(255, 255, 255, 0.7);">中汽研汽车产品碳足迹评价与标识认证系统</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片放大模态框 -->
+    <div id="imageModal" class="image-modal">
+        <img id="modalImage" src="" alt="">
+    </div>
+
+    <script>
+        const projectImages = document.querySelectorAll('.project-image');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+
+        projectImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modalImage.src = this.src;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modal.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>

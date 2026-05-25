@@ -42,7 +42,7 @@ const projectsData = [
         image: 'images/home/中汽研碳足迹认证门户设计.png',
         tags: ['Web网页'],
         description: '中汽研碳足迹认证门户设计',
-        link: 'about:blank',
+        link: 'http://220.154.139.54:32545/catarc-ui/portalHome',
         category: 'Web网页'
     },
     {
@@ -62,10 +62,46 @@ const projectsData = [
         description: '设计组件制作与维护，构建可复用的设计系统组件库',
         link: 'about:blank',
         category: '其他'
+    },
+    {
+        id: 8,
+        title: '工作台设计合集',
+        image: 'images/home/工作台设计合集/封面.png',
+        tags: ['B端UI', '工作台设计'],
+        description: '工作台设计合集，整合多种工作台场景设计',
+        link: 'project3.html',
+        category: 'B端UI'
     }
 ];
 
-// 渲染首页代表作品
+// 自定义确认弹窗
+function showCustomConfirm(callback) {
+    const overlay = document.getElementById('customConfirm');
+    const okBtn = document.getElementById('confirmOk');
+    const cancelBtn = document.getElementById('confirmCancel');
+    
+    overlay.style.display = 'flex';
+    
+    function cleanup() {
+        overlay.style.display = 'none';
+        okBtn.removeEventListener('click', onOk);
+        cancelBtn.removeEventListener('click', onCancel);
+    }
+    
+    function onOk() {
+        cleanup();
+        callback(true);
+    }
+    
+    function onCancel() {
+        cleanup();
+        callback(false);
+    }
+    
+    okBtn.addEventListener('click', onOk);
+    cancelBtn.addEventListener('click', onCancel);
+}
+
 function renderFeaturedProjects() {
     const featuredGrid = document.querySelector('.featured-grid');
     if (!featuredGrid) return;
@@ -76,22 +112,28 @@ function renderFeaturedProjects() {
         project.title.includes('碳擎3.0') ||
         project.title.includes('奇瑞') ||
         project.title.includes('设计组件') ||
-        project.title.includes('可视化大屏')
-    );
+        project.title.includes('可视化大屏') ||
+        project.title.includes('中汽研')
+    ).sort((a, b) => {
+        const aIsClickable = a.title.includes('碳擎3.0') || a.title.includes('江苏省零碳园区') || a.title.includes('中汽研');
+        const bIsClickable = b.title.includes('碳擎3.0') || b.title.includes('江苏省零碳园区') || b.title.includes('中汽研');
+        return bIsClickable - aIsClickable;
+    });
     
     featuredProjects.forEach((project, index) => {
         const card = document.createElement('div');
         card.className = 'featured-card';
         const isCarbonProject = project.title.includes('碳擎3.0');
         const isZeroCarbonProject = project.title.includes('江苏省零碳园区');
+        const isCatarcProject = project.title.includes('中汽研');
         
-        if (!isCarbonProject && !isZeroCarbonProject) {
+        if (!isCarbonProject && !isZeroCarbonProject && !isCatarcProject) {
             card.classList.add('has-overlay');
         }
         
         card.innerHTML = `
             <img src="${project.image}" alt="${project.title}" class="featured-img">
-            ${(!isCarbonProject && !isZeroCarbonProject) ? `
+            ${(!isCarbonProject && !isZeroCarbonProject && !isCatarcProject) ? `
             <div class="coming-soon-overlay">
                 <span class="coming-soon-text">奋力产出中~</span>
             </div>
@@ -107,9 +149,17 @@ function renderFeaturedProjects() {
             </div>
         `;
         
-        if (isCarbonProject || isZeroCarbonProject) {
+        if (isCarbonProject || isZeroCarbonProject || isCatarcProject) {
             card.addEventListener('click', function() {
-                window.open(project.link, '_blank');
+                if (isCatarcProject) {
+                    showCustomConfirm(function(confirmed) {
+                        if (confirmed) {
+                            window.open(project.link, '_blank');
+                        }
+                    });
+                } else {
+                    window.open(project.link, '_blank');
+                }
             });
         }
         
@@ -140,6 +190,13 @@ function renderAllProjects(category = '全部') {
         filteredProjects = projectsData.filter(project => project.category === category);
     }
     
+    // 让可点击项目在最前面
+    filteredProjects = filteredProjects.sort((a, b) => {
+        const aIsClickable = a.title.includes('碳擎3.0') || a.title.includes('江苏省零碳园区') || a.title.includes('工作台设计合集') || a.title.includes('中汽研');
+        const bIsClickable = b.title.includes('碳擎3.0') || b.title.includes('江苏省零碳园区') || b.title.includes('工作台设计合集') || b.title.includes('中汽研');
+        return bIsClickable - aIsClickable;
+    });
+    
     if (filteredProjects.length === 0) {
         // 没有内容时显示空状态
         const emptyState = document.createElement('div');
@@ -154,14 +211,16 @@ function renderAllProjects(category = '全部') {
         card.className = 'project-card';
         const isCarbonProject = project.title.includes('碳擎3.0');
         const isZeroCarbonProject = project.title.includes('江苏省零碳园区');
+        const isWorkbenchProject = project.title.includes('工作台设计合集');
+        const isCatarcProject = project.title.includes('中汽研');
         
-        if (!isCarbonProject && !isZeroCarbonProject) {
+        if (!isCarbonProject && !isZeroCarbonProject && !isWorkbenchProject && !isCatarcProject) {
             card.classList.add('has-overlay');
         }
         
         card.innerHTML = `
             <img src="${project.image}" alt="${project.title}" class="project-img">
-            ${(!isCarbonProject && !isZeroCarbonProject) ? `
+            ${(!isCarbonProject && !isZeroCarbonProject && !isWorkbenchProject && !isCatarcProject) ? `
             <div class="coming-soon-overlay">
                 <span class="coming-soon-text">奋力产出中~</span>
             </div>
@@ -177,9 +236,17 @@ function renderAllProjects(category = '全部') {
             </div>
         `;
         
-        if (isCarbonProject || isZeroCarbonProject) {
+        if (isCarbonProject || isZeroCarbonProject || isWorkbenchProject || isCatarcProject) {
             card.addEventListener('click', function() {
-                window.open(project.link, '_blank');
+                if (isCatarcProject) {
+                    showCustomConfirm(function(confirmed) {
+                        if (confirmed) {
+                            window.open(project.link, '_blank');
+                        }
+                    });
+                } else {
+                    window.open(project.link, '_blank');
+                }
             });
         }
         
